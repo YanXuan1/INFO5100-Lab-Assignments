@@ -316,11 +316,12 @@ public class CreateJPanel extends javax.swing.JPanel {
         
         String regex ="(?i)^(?!([a-z]*|\\d*)$)[a-z\\d]+$";  
         boolean ju = false;
-        if(serialNumber.length() == 17 && serialNumber.matches(regex)){
+        if(serialNumber.length() == 17 && serialNumber.matches(regex) && carList.isOnlySN(serialNumber)){
             car.setSerialNumber(serialNumber);
+            carList.setSerialList(carList.addSN(serialNumber));
             ju = true;
         }else{
-            JOptionPane.showMessageDialog(new JDialog(),"Please input the correct SerialNumber!");
+            JOptionPane.showMessageDialog(new JDialog(),"Please input the correct SerialNumber or the SreialNumber already exists!");
         }
         
         

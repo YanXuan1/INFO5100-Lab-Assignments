@@ -371,7 +371,9 @@ public class ViewJPanel extends javax.swing.JPanel {
         }
         
         Car car = carList.getItem(selectedRowIndex);
+        carList.setSerialList(carList.deleteSN(car.getSerialNumber()));
         carList.deleteCar(car);
+        
         JOptionPane.showMessageDialog(this, "Vital Signs deleted!");
         populateTable();
         
@@ -551,11 +553,13 @@ public class ViewJPanel extends javax.swing.JPanel {
         
         String regex ="(?i)^(?!([a-z]*|\\d*)$)[a-z\\d]+$";    
         boolean ju = false;
-        if(serialNumber.length() == 17 && serialNumber.matches(regex)){
+        if(!carList.isOnlySN(serialNumber)) carList.setSerialList(carList.deleteSN(serialNumber));
+        if(serialNumber.length() == 17 && serialNumber.matches(regex) && carList.isOnlySN(serialNumber)){
             carList.getItem(selectedRowIndex).setSerialNumber(serialNumber);
+            carList.setSerialList(carList.addSN(serialNumber));
             ju = true;
         }else{
-            JOptionPane.showMessageDialog(new JDialog(),"Please input the correct SerialNumber!");
+            JOptionPane.showMessageDialog(new JDialog(),"Please input the correct SerialNumber or the SreialNumber already exists!");
         }
         
         
@@ -582,7 +586,7 @@ public class ViewJPanel extends javax.swing.JPanel {
             carList.getItem(selectedRowIndex).setModelNumber(car.getModelNumber());
             carList.getItem(selectedRowIndex).setSeats(car.getSeats());
             carList.getItem(selectedRowIndex).setSerialNumber(car.getSerialNumber());
-            JOptionPane.showMessageDialog(new JDialog(),"Failed to create a new car! Try it again!");
+            JOptionPane.showMessageDialog(new JDialog(),"Failed to change a new car! Try it again!");
         }
   
     }//GEN-LAST:event_btnSaveActionPerformed
