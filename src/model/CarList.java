@@ -29,6 +29,7 @@ public class CarList {
         car1.setSeats(4);
         car1.setSerialNumber("798AB456AA2ML1786");
         carList.add(car1);
+        serialList.add("798AB456AA2ML1786");
         
         Car car2 = new Car();
         car2.setBrand("Ford");
@@ -41,6 +42,7 @@ public class CarList {
         car2.setSeats(5);
         car2.setSerialNumber("1111111111AAAAAAA");
         carList.add(car2);
+        serialList.add(car2.getSerialNumber());
         
         Car car3 = new Car();
         car3.setBrand("Ford");
@@ -53,6 +55,8 @@ public class CarList {
         car3.setSeats(5);
         car3.setSerialNumber("2222222222AAAAAAA");
         carList.add(car3);
+        serialList.add(car3.getSerialNumber());
+        
         
         Car car4 = new Car();
         car4.setBrand("FAW-Audi");
@@ -65,6 +69,7 @@ public class CarList {
         car4.setSeats(6);
         car4.setSerialNumber("3333333333AAAAAAA");
         carList.add(car4);
+        serialList.add(car4.getSerialNumber());
         
         Car car5 = new Car();
         car5.setBrand("FAW-Audi");
@@ -77,7 +82,7 @@ public class CarList {
         car5.setSeats(4);
         car5.setSerialNumber("3222222222AAAAAAA");
         carList.add(car5);
-        
+        serialList.add(car5.getSerialNumber());
         Car car6 = new Car();
         car6.setBrand("FAW-Toyota");
         car6.setBuildDate("2008/02/02");
@@ -89,6 +94,7 @@ public class CarList {
         car6.setSeats(6);
         car6.setSerialNumber("3555222222AAAAAAA");
         carList.add(car6);
+        serialList.add(car6.getSerialNumber());
     }
 
     public ArrayList<Car> getCarList() {

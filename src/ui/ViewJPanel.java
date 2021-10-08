@@ -399,8 +399,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         Car car = carList.getItem(selectedRowIndex);
         txtBrand.setText(car.getBrand());
         txtYear.setText(car.getBuildDate());
-        txtSeats.setText(String.valueOf(car.getSeats()));
-        txtSN.setText(car.getSerialNumber());
+        txtSeats.setText(String.valueOf(car.getSeats()));       
+        txtSN.setText(car.getSerialNumber());     
         txtMN.setText(car.getModelNumber());
         txtCity.setText(car.getCity());
         txtManu.setText(car.getManufacturer());
@@ -553,7 +553,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         
         String regex ="(?i)^(?!([a-z]*|\\d*)$)[a-z\\d]+$";    
         boolean ju = false;
-        if(!carList.isOnlySN(serialNumber)) carList.setSerialList(carList.deleteSN(serialNumber));
+        carList.setSerialList(carList.deleteSN(carList.getItem(selectedRowIndex).getSerialNumber()));
         if(serialNumber.length() == 17 && serialNumber.matches(regex) && carList.isOnlySN(serialNumber)){
             carList.getItem(selectedRowIndex).setSerialNumber(serialNumber);
             carList.setSerialList(carList.addSN(serialNumber));
